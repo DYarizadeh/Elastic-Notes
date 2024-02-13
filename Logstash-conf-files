@@ -1,0 +1,44 @@
+**************
+DFIR Report
+**************
+Network (suricata/zeek) 
+************** 
+input {
+  file {
+    path => ["/mnt/hgfs/SIFT/19172/network/**/*.json"]
+    start_position => "beginning"
+    codec => "json"
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => ["http://localhost:9200"]
+    index => "dfirreport-suricata-zeek"
+  }
+  
+  stdout {
+	codec => rubydebug
+  }
+}
+**************
+End Point Logs
+**************
+input {
+  file {
+    path => ["/mnt/hgfs/SIFT/19172/logs/elastic-endpointdata/*.json"]
+    start_position => "beginning"
+    codec => "json"
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => ["http://localhost:9200"]
+    index => "dfirreport-endpoint"
+  }
+  
+  stdout {
+	codec => rubydebug
+  }
+}
