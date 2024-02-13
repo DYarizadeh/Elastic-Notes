@@ -34,3 +34,15 @@ http.host: 0.0.0.0
 # Allow other nodes to join the cluster from anywhere
 # Connections are encrypted and mutually authenticated
 #transport.host: 0.0.0.0
+
+*************************************
+This is the config at the bottom of Kibana.yml, which indicates removal of the "s" in https, thus negating the ssl capabiliteis and not requiring configuration of certs 
+
+# This section was automatically generated during setup.
+
+elasticsearch.hosts: ['http://192.168.27.168:9200']
+elasticsearch.serviceAccountToken: [redacted]
+elasticsearch.ssl.certificateAuthorities: [/home/velo/Downloads/kibana-8.11.1-linux-x86_64/kibana-8.11.1/data/ca_1706108078349.crt]
+xpack.fleet.outputs: [{id: fleet-default-output, name: default, is_default: true, is_default_monitoring: true, type: elasticsearch, hosts: ['http://192.168.27.168:9200'], ca_trusted_fingerprint: [redacted]}]
+
+**************************************
